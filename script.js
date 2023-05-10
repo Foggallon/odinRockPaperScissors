@@ -1,4 +1,3 @@
-console.log("Hello Console!");
 
 function getComputerChoice()
 {
@@ -17,3 +16,17 @@ function getComputerChoice()
         return "Scissors";
     }
 }
+
+function playRound(playerSelection,computerSelection)
+{
+    if(playerSelection===Rock)
+    {
+       if(computerSelection===Rock) return "It's a draw!";
+       else if(computerSelection===Paper) return "You Lose! Paper beats Rock!";
+       else return"You WIN! Rock beats Scissors";
+    }
+}
+
+let playerChoice;
+playerChoice=prompt("Select a weapon!");
+alert(playRound(playerChoice,getComputerChoice()));
