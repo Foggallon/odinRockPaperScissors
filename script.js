@@ -19,14 +19,15 @@ function getComputerChoice()
 
 function playRound(playerSelection,computerSelection)
 {
-    if(playerSelection===Rock)
+    if(playerSelection==="ROCK")
     {
-       if(computerSelection===Rock) return "It's a draw!";
-       else if(computerSelection===Paper) return "You Lose! Paper beats Rock!";
+       if(computerSelection==="Rock") return "It's a draw!";
+       else if(computerSelection==="Paper") return "You Lose! Paper beats Rock!";
        else return"You WIN! Rock beats Scissors";
     }
 }
 
 let playerChoice;
 playerChoice=prompt("Select a weapon!");
+playerChoice=playerChoice.toUpperCase();
 alert(playRound(playerChoice,getComputerChoice()));
