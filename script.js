@@ -1,4 +1,3 @@
-
 function getComputerChoice()
 {
     let computerChoice;
@@ -39,7 +38,6 @@ function playRound(playerSelection,computerSelection)
     }
 }
 
-
 let playerChoice;
 let playerScore=0;
 let computerScore=0;
@@ -47,12 +45,10 @@ let computerScore=0;
 function game()
 {
     let roundNumber;
-    for(i=1;i<=5;i++)
-    {
         roundNumber=i.toString();
         console.log("Round ",roundNumber);
-        playerChoice=prompt("Select a weapon!");
-        playerChoice=playerChoice.toUpperCase();
+        //playerChoice=prompt("Select a weapon!");
+        //playerChoice=playerChoice.toUpperCase();
         if(playRound(playerChoice,getComputerChoice())==="You WIN! Scissors beat Paper" ||playRound(playerChoice,getComputerChoice())==="You WIN! Paper beats Rock"||playRound(playerChoice,getComputerChoice())==="You WIN! Rock beats Scissors")
         {
             playerScore+=1;
@@ -66,9 +62,9 @@ function game()
         {
             computerScore+=1;
         }
-    }
-    console.log("Your score is: ",playerScore);
-    console.log("Computer's score is: ",computerScore);
+
+    //console.log("Your score is: ",playerScore);
+    //console.log("Computer's score is: ",computerScore);
     if(playerScore>computerScore)
     {
         console.log("You WIN!")
