@@ -1,3 +1,30 @@
+let playerChoice;
+let playerScore=0;
+let computerScore=0;
+let result;
+let roundResult;
+
+const bod=document.querySelector('body');
+const divButtons=document.querySelector('.buttons');
+const rockButton=divButtons.querySelector('.rock');
+rockButton.addEventListener('click',function(){
+    playerChoice="ROCK";
+    game();
+});
+const paperButton=divButtons.querySelector('.paper');
+paperButton.addEventListener('click',function(){
+    playerChoice="PAPER";
+    game();
+});
+const scissorsButton=divButtons.querySelector('.scissors');
+scissorsButton.addEventListener('click',function(){
+    playerChoice="SCISSORS";
+    game();
+});
+
+const results=document.querySelector('.results');
+const winner=document.querySelector('.winner');
+
 function getComputerChoice()
 {
     let computerChoice;
@@ -20,64 +47,57 @@ function playRound(playerSelection,computerSelection)
 {
     if(playerSelection==="ROCK")
     {
-       if(computerSelection==="Rock") return "It's a draw!";
-       else if(computerSelection==="Paper") return "You Lose! Paper beats Rock!";
-       else return"You WIN! Rock beats Scissors";
+       if(computerSelection==="Rock") return "draw";
+       else if(computerSelection==="Paper") return "Lose";
+       else return"WIN";
     }
     if(playerSelection==="PAPER")
     {
-       if(computerSelection==="Paper") return "It's a draw!";
-       else if(computerSelection==="Scissors") return "You Lose! Paper beats Rock!";
-       else return"You WIN! Paper beats Rock";
+       if(computerSelection==="Paper") return "draw";
+       else if(computerSelection==="Scissors") return "Lose";
+       else return"WIN";
     }
     if(playerSelection==="SCISSORS")
     {
-       if(computerSelection==="Scissors") return "It's a draw!";
-       else if(computerSelection==="Rock") return "You Lose! Rock beats Scissors!";
-       else return"You WIN! Scissors beat Paper";
+       if(computerSelection==="Scissors") return "draw";
+       else if(computerSelection==="Rock") return "Lose";
+       else return"WIN";
     }
 }
-
-let playerChoice;
-let playerScore=0;
-let computerScore=0;
 
 function game()
 {
-    let roundNumber;
-        roundNumber=i.toString();
-        console.log("Round ",roundNumber);
-        //playerChoice=prompt("Select a weapon!");
-        //playerChoice=playerChoice.toUpperCase();
-        if(playRound(playerChoice,getComputerChoice())==="You WIN! Scissors beat Paper" ||playRound(playerChoice,getComputerChoice())==="You WIN! Paper beats Rock"||playRound(playerChoice,getComputerChoice())==="You WIN! Rock beats Scissors")
-        {
-            playerScore+=1;
-        }
-        else if(playRound(playerChoice,getComputerChoice())==="It's a draw!")
-        {
-            playerScore+=1;
-            computerScore+=1;
-        }
-        else
-        {
-            computerScore+=1;
-        }
-
-    //console.log("Your score is: ",playerScore);
-    //console.log("Computer's score is: ",computerScore);
-    if(playerScore>computerScore)
+    if(playerScore===0&&computerScore===0) winner.style.cssText='background-color: rgba(0, 0, 0, 0); color: rgba(0, 0, 0, 0); text-shadow: 0 0 rgba(0, 0, 0, 0);';
+    if(playRound(playerChoice,getComputerChoice())==="WIN")
     {
-        console.log("You WIN!")
+        playerScore+=1;
     }
-    else if(computerScore>playerScore)
+    else if(playRound(playerChoice,getComputerChoice())==="draw")
     {
-        console.log("You LOSE!");
+        playerScore+=0;
+        computerScore+=0;
     }
     else
     {
-        console.log("It's a draw.");
+        computerScore+=1;
     }
+    result=playerScore.toString()+":"+computerScore.toString();
+    results.textContent="POINTS\n"+result;
+
+if(playerScore===5)
+{
+    winner.textContent="YOU WIN!";
+    winner.style.cssText='justify-content: center;align-items: center;background-color: rgb(115,137,174);';
+    playerScore=0;
+    computerScore=0;
+}
+if(computerScore===5)
+{
+    winner.textContent="YOU LOSE!";
+    winner.style.cssText='justify-content: center;background-color: rgb(115,137,174);';
+    playerScore=0;
+    computerScore=0;
+}
 }
 
-game();
 
