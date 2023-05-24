@@ -4,7 +4,6 @@ let computerScore=0;
 let result;
 let roundResult;
 
-const bod=document.querySelector('body');
 const divButtons=document.querySelector('.buttons');
 const rockButton=divButtons.querySelector('.rock');
 rockButton.addEventListener('click',function(){
